@@ -19,14 +19,25 @@
             0 10px 10px rgba(0,0,0,.2),
             0 20px 20px rgba(0,0,0,.15);
         }
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
-<body>
-<div  class="container">
+<body background="../static/img/background_4.jpg">
+<div  class="container bg">
     <div class="container text-center" style="padding-top:50px">
         <h1>Ceylon Bank</h1>
     </div>
-    <div class="card shadow container" style="padding-top:50px" >
+    <div class="card shadow container" style="padding-top:30px;padding-bottom:30px;" >
         <div class="card-body">
             <h2 class="card-title text-center">Create New Account - Sign Up</h2>
             <div class="row">
