@@ -4,164 +4,198 @@
     <meta charset="UTF-8">
     <title>New Account</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        h1 {
+            text-shadow: 0 3px 0 #fff,
+            0 2px 0 #c9c9c9,
+            0 3px 0 #bbb,
+            0 4px 0 #b9b9b9,
+            0 5px 0 #aaa,
+            0 6px 1px rgba(0,0,0,.1),
+            0 0 5px rgba(0,0,0,.1),
+            0 1px 3px rgba(0,0,0,.3),
+            0 3px 5px rgba(0,0,0,.2),
+            0 5px 10px rgba(0,0,0,.25),
+            0 10px 10px rgba(0,0,0,.2),
+            0 20px 20px rgba(0,0,0,.15);
+        }
+    </style>
 </head>
 <body>
 <div  class="container">
-    <div class="container text-center">
+    <div class="container text-center" style="padding-top:50px">
         <h1>Ceylon Bank</h1>
     </div>
-    <div class="card container" >
+    <div class="card shadow container" style="padding-top:50px" >
         <div class="card-body">
-            <h3 class="card-title text-center">Create New Account - Sign Up</h3>
-            <div >
-                <form th:action="@{/register}" method="post" th:object="${customer}">
-                    <div class="container row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Email Address</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input
-                                            type="email"
-                                            class="form-control"
-                                            id="exampleInputEmail1"
-                                            aria-describedby="emailHelp"
-                                            placeholder="Enter email..."
-                                            th:field="*{email}"
-                                            required
-                                    />
-                                    <small id="emailHelp" class="form-text text-muted">Use your official email to create the account</small>
+            <h2 class="card-title text-center">Create New Account - Sign Up</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <form th:action="@{/register}" method="post" th:object="${customer}">
+                        <div class="container row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label class="col-form-label">Email Address</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input
+                                                type="email"
+                                                class="form-control"
+                                                id="exampleInputEmail1"
+                                                aria-describedby="emailHelp"
+                                                placeholder="Enter email..."
+                                                th:field="*{email}"
+                                                required
+                                        />
+                                        <small id="emailHelp" class="form-text text-muted">Use your official email to create the account</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row container">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label class="col-form-label">First Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="InputFirstName"
+                                                placeholder="Enter your First name..."
+                                                th:field="*{firstName}"
+                                                minlength="2"
+                                                maxlength="20"
+                                                required
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputEmail1">Last Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="InputLastName"
+                                                placeholder="Enter your Last name..."
+                                                th:field="*{lastName}"
+                                                required
+                                                minlength="2"
+                                                maxlength="20"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputEmail1">Username</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="exampleInputUsername"
+                                                aria-describedby="emailHelp"
+                                                placeholder="Enter username..."
+                                                th:field="*{username}"
+                                                required
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputEmail1">Branch</label>
+                                    </div>
+                                    <div class="col-md-8">
 
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="InputBranch"
+                                                placeholder="Enter the Branch Name..."
+                                                th:field="*{branch}"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-md-2">
+                                        <label for="exampleInputEmail1">Account Number</label>
+                                    </div>
+                                    <div class="col-md-10">
 
-                    </div>
-                    <div class="row container">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">First Name</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input
-                                            type="text"
-                                            class="form-control"
-                                            id="InputFirstName"
-                                            placeholder="Enter your First name..."
-                                            th:field="*{firstName}"
-                                            minlength="2"
-                                            maxlength="20"
-                                            required
-                                    />
-                                </div>
-                         </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1">Last Name</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input
-                                            type="text"
-                                            class="form-control"
-                                            id="InputLastName"
-                                            placeholder="Enter your Last name..."
-                                            th:field="*{lastName}"
-                                            required
-                                            minlength="2"
-                                            maxlength="20"
-                                    />
-                                </div>
-                             </div>
-                        </div>
-                    </div>
-                    <div class="container row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1">Username</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input
-                                            type="text"
-                                            class="form-control"
-                                            id="exampleInputUsername"
-                                            aria-describedby="emailHelp"
-                                            placeholder="Enter username..."
-                                            th:field="*{username}"
-                                            required
-                                    />
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                id="InputAccNumber"
+                                                placeholder="Enter the Account Number..."
+                                                th:field="*{accNumber}"
+                                                required
+                                        />
+                                        <small id="accNumHelp" class="form-text text-muted">Enter your unique Account number provided by the Bank Counter</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1">Branch Name</label>
+                        <div class="container row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputPassword1">Password</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input
+                                                type="password"
+                                                class="form-control"
+                                                id="exampleInputPassword1"
+                                                placeholder="Password..."
+                                                th:field="*{password}"
+                                                minlength="5"
+                                                maxlength="10"
+                                        />
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-dark">Create New Account</button>
+                            </div>
 
-                                    <input
-                                            type="text"
-                                            class="form-control"
-                                            id="InputBranch"
-                                            placeholder="Enter the Branch Name..."
-                                            th:field="*{branch}"
-                                    />
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    <div class="container row">
-                        <div class="col-md-12">
-                            <div class="form-group row">
-                                <div class="col-md-2">
-                                    <label for="exampleInputEmail1">Account Number</label>
-                                </div>
-                                <div class="col-md-10">
+                    </form>
 
-                                    <input
-                                            type="text"
-                                            class="form-control"
-                                            id="InputAccNumber"
-                                            placeholder="Enter the Account Number..."
-                                            th:field="*{accNumber}"
-                                            required
-                                    />
-                                    <small id="accNumHelp" class="form-text text-muted">Enter your unique Account number provided by the Bank Counter</small>
-                                </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="align-items-center">
+                        <img class="rounded mx-auto d-block " src="../static/img/bank-icon-1.png" th:src="@{img/bank-icon-1.png}" alt="bank icon"  style="width:70%"/>
+                        <h3 class="text-center">Online Banking</h3>
+                        <h4 class="text-center">Registration</h4>
+                        <div style="padding-top:20px">
+                            <div class="d-flex justify-content-center">
+                                <center>
+                                    <a href="/"><button  class="btn btn-outline-danger">Back</button></a>
+                                    <a th:href="@{/login}"><button  class="btn btn-outline-success">Go to Login</button></a>
+                                </center>
                             </div>
                         </div>
                     </div>
-                    <div class="container row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label for="exampleInputPassword1">Password</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input
-                                            type="password"
-                                            class="form-control"
-                                            id="exampleInputPassword1"
-                                            placeholder="Password..."
-                                            th:field="*{password}"
-                                            minlength="5"
-                                            maxlength="10"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-dark">Create New Account</button>
-                           </div>
-                    </div>
-               </form>
-                <a href="/"><button  class="btn btn-outline-danger">Back</button></a>
-                <a th:href="@{/login}"><button  class="btn btn-outline-success">Go to Login</button></a>
+
+                </div>
             </div>
         </div>
     </div>

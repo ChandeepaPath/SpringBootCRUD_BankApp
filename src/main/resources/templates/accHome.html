@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div  class="container-fluid text-center">
+    <h1>Ceylon Bank</h1>
+    <p>Welcome to Online Banking</p>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <div class="card container">
+        <h2> Your Account Balance is</h2>
+        <table>
+            <thead class="thead-dark">
+                <tr>
+                    <th>User Email</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!--/*@thymesVar id="listUsers" type=""*/-->
+            <tr th:each="user: ${listUsers}">
+                <!--/*@thymesVar id="user" type=""*/-->
+                <td th:text="${user.email}">User email</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+</body>
+</html>

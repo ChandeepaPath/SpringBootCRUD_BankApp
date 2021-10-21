@@ -4,14 +4,62 @@
     <meta charset="UTF-8">
     <title>Bank Application</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+    h1 {
+    text-shadow: 0 3px 0 #fff,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+    }
+</style>
 </head>
 <body>
-<div  class="container-fluid text-center">
-    <h1>Ceylon Bank</h1>
-    <p>Welcome to Online Banking</p>
-    <a class="'h2" th:href="@{/newAccount}">Create New Account</a>
-    <a class="'h2" th:href="@{/login}">Login</a>
-    <h1>This is the Landing page</h1>
+<div  class="container-fluid text-center align-self-center" style="padding-top:50px">
+    <div class="card shadow" >
+    <div class="row align-items-center">
+        <div class="col-md-8 mx-auto ">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100 shadow" src="../static/img/carousel_1.jpg" th:src="@{img/carousel_1.jpg}" alt="First slide"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class=" container">
+                <h1><b>Ceylon  Bank</b></h1>
+                <div>
+                    <img class="rounded mx-auto d-block " src="../static/img/bank-icon-2.png" th:src="@{img/bank-icon-2.png}" alt="bank icon"  style="width:50%"/>
+                </div>
+                <h3>Welcome to Online Banking</h3>
+                <p>Small steps to a better future. You're in good hands.</p>
+
+                <div class="row align-items-center">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col">
+                                <a class="'h2" th:href="@{/newAccount}"><button class="btn btn-secondary shadow">New Account</button></a>
+                            </div>
+                            <div class="col ">
+                                <a class="'h2" th:href="@{/login}"><button class="btn btn-primary shadow">Login</button></a></div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 </div>
 </body>
 </html>
