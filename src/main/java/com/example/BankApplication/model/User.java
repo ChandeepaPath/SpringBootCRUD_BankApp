@@ -33,6 +33,9 @@ public class User {
     @Column(nullable = false, length = 20)
     private String Username;
 
+    @Column(nullable = false, length = 10)
+    private String phoneNumber;
+
     @Column(name ="timestamp")
     @CreationTimestamp
     private Date Created_at;
@@ -106,5 +109,13 @@ public class User {
 
     public void setAccNumber(String accNumber) {
         this.accNumber = accNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

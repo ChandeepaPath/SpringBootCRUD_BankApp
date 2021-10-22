@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.List;
+
 public class CustomerDetailsService implements UserDetailsService {
 
     @Autowired
@@ -19,5 +21,9 @@ public class CustomerDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User Not Found");
         }
         return new CustomerDetails(cus);
+    }
+
+    public List<User> listAll(){
+        return (List<User>) repo.findAll();
     }
 }

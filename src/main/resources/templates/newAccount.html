@@ -163,7 +163,7 @@
                             </div>
                         </div>
                         <div class="container row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group row">
                                     <div class="col-md-4">
                                         <label for="exampleInputPassword1">Password</label>
@@ -176,6 +176,23 @@
                                                 placeholder="Password..."
                                                 th:field="*{password}"
                                                 minlength="5"
+                                                maxlength="10"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label for="exampleInputPassword1">Mobile No</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Mobile Number..."
+                                                th:field="*{phoneNumber}"
+                                                minlength="10"
                                                 maxlength="10"
                                         />
                                     </div>

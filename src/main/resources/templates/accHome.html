@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -25,15 +27,16 @@
 <div>
     <div>
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Ceylon Bank</a>
+            <a class="navbar-brand" href="/accHome">Ceylon Bank</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#">Deposit</a>
+                    <a class="nav-item nav-link active" href="/accHome">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/deposit">Deposit</a>
                     <a class="nav-item nav-link" href="#">History</a>
+                    <a class="nav-item nav-link" href="/userDetails">User Details</a>
                 </div>
             </div>
             <form th:action="@{/logout}" method="post" class="form-inline">
@@ -46,31 +49,14 @@
         <img class="rounded mx-auto d-block " src="../static/img/bank-icon-3.png" th:src="@{img/bank-icon-3.png}" alt="bank icon"  style="width:10%"/>
         <h4>Bank Balance Check</h4>
         <div class="card container shadow" style="padding:20px">
-            <p class="text-left">Account Number : <b>465456456462</b></p>
+            <p class="text-left">Account Number : <b><span sec:authentication="principal.accNumber">Account Number</span></b></p>
 
         <div class="card container bg-light" style="padding:30px; background-color:#1565c0; ">
-            <h2><b>LKR 34,308 </b></h2>
+            <h2><b>LKR <span th:text="${balance}">Balance</span> </b></h2>
             <h4> Balance Available</h4>
         </div>
         </div>
-
-<!--            <table>-->
-<!--                <thead class="thead-dark">-->
-<!--                <tr>-->
-<!--                    <th>User Email</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                &lt;!&ndash;/*@thymesVar id="listUsers" type=""*/&ndash;&gt;-->
-<!--                <tr th:each="user: ${listUsers}">-->
-<!--                    &lt;!&ndash;/*@thymesVar id="user" type=""*/&ndash;&gt;-->
-<!--                    <td th:text="${user.email}">User email</td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
         </div>
-
-
     </div>
 </div>
 </body>

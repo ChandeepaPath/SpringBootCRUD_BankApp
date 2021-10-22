@@ -48,4 +48,21 @@ public class CustomerDetails implements UserDetails {
     public boolean isEnabled() {
         return true ;
     }
+
+    public String getFullname(){
+        return customer.getFirstName() + " " + customer.getLastName();
+    }
+
+    public String getBranch(){
+        return customer.getBranch();
+    }
+
+    public String getAccNumber(){
+        return customer.getAccNumber();
+    }
+
+    public String getPhoneNumber(){
+        return customer.getPhoneNumber();
+    }
+
 }
