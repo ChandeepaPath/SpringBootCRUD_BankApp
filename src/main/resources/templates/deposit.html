@@ -2,8 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sucess</title>
+    <title>Deposit</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        h1 {
+            text-shadow: 0 3px 0 #fff,
+            0 2px 0 #c9c9c9,
+            0 3px 0 #bbb,
+            0 4px 0 #b9b9b9,
+            0 5px 0 #aaa,
+            0 6px 1px rgba(0,0,0,.1),
+            0 0 5px rgba(0,0,0,.1),
+            0 1px 3px rgba(0,0,0,.3),
+            0 3px 5px rgba(0,0,0,.2),
+            0 5px 10px rgba(0,0,0,.25),
+            0 10px 10px rgba(0,0,0,.2),
+            0 20px 20px rgba(0,0,0,.15);
+        }
+    </style>
 </head>
 <body>
 <div>
@@ -28,8 +44,41 @@
     </div>
 </div>
 <div  class="container-fluid text-center">
-    <h1>Ceylon Bank</h1>
-    <h3>You have successfully Signed In</h3>
+    <h1 style="padding: 50px">Ceylon Bank</h1>
+    <div class="card container shadow-lg" style="padding: 40px">
+        <h3 style="padding: 20px">Cash Deposit</h3>
+        <div class="row container" >
+            <div class="col-md-4">
+                <p class="containertext-center"><b>Enter the Amount</b> </p>
+            </div>
+            <div class="col-md-8">
+                <form  method="post" th:action="@{/deposit/confirm}"
+                      enctype="multipart/form-data">
+                    <div th:if="${message != null}" class="alert alert-success text-center">
+                        [[${message}]]
+                    </div>
+                    <div class="row container">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                    <input
+                                            type="number"
+                                            class="form-control"
+                                            id="InputFirstName"
+                                            placeholder="Enter the Amount..."
+                                            minlength="2"
+                                            maxlength="20"
+                                            required
+                                    />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <a th:href="@{/deposit}"> <button type="submit" class="btn btn-dark">Deposit</button></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

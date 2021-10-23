@@ -19,11 +19,4 @@ public class Maincontroller {
         return "login";
     }
 
-//    @GetMapping("/accHome")
-//    public String accHomePage(Model model){
-//        List<User> listUsers =  repo.findAll();
-//        model.addAttribute("users", listUsers);
-//        return "accHome";
-//    }
-
 }

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerDetailsService implements UserDetailsService {
 
@@ -16,11 +17,11 @@ public class CustomerDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User cus = repo.findByEmail(email);
-        if(cus == null){
+        Optional<User> cus = repo.findByEmail(email);
+        if(cus.isEmpty()){
             throw new UsernameNotFoundException("User Not Found");
         }
-        return new CustomerDetails(cus);
+        return new CustomerDetails(cus.get());
     }
 
     public List<User> listAll(){
