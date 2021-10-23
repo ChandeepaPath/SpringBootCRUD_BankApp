@@ -64,5 +64,21 @@ public class CustomerDetails implements UserDetails {
     public String getPhoneNumber(){
         return customer.getPhoneNumber();
     }
+    public String getFirstName(){
+        return customer.getFirstName();
+    }
+    public String getLastName(){
+        return customer.getLastName();
+    }
+
+    public void setPhoneNumber(String phoneNumer){
+      this.customer.setPhoneNumber(phoneNumer);
+    }
+    public void setFirstName(String firstname){
+        this.customer.setFirstName(firstname);
+    }
+    public void setLastName(String lastName){
+        this.customer.setLastName(lastName );
+    }
 
 }

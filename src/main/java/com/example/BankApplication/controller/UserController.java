@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -52,25 +54,22 @@ public class UserController {
         return "accHome";
     }
 
-
-    //    @GetMapping("/accHome/userDetails")
-//    public String displayProfile(Model model, Principal principal){
-//        String un = principal.getName();
-//        model.addAttribute("cusDetails", service.listAll(un));
-//        return "customerDetails";
-//    }
     @GetMapping("/userDetails")
     public String userProfile(@AuthenticationPrincipal CustomerDetails customerDetails, Model model){
-//        List<User> listUsers = service.listAll();
-//        model.addAttribute("listUsers", listUsers);
         model.addAttribute("customerDetails",customerDetails );
         return "customerDetails";
     }
-    //    @GetMapping("/accHome")
-//    public String accHomePage(Model model){
-//        List<User> listUsers =  repo.findAll();
-//        model.addAttribute("users", listUsers);
-//        return "accHome";
-//    }
+
+    @PostMapping("/userDetails/update")
+    public String editUser(User customer, RedirectAttributes redirectAttributes,
+                           @AuthenticationPrincipal CustomerDetails loggedCustomer){
+        loggedCustomer.setFirstName(customer.getFirstName());
+        loggedCustomer.setLastName(customer.getLastName());
+        loggedCustomer.setPhoneNumber(customer.getPhoneNumber());
+
+        redirectAttributes.addFlashAttribute("message","Your Account Details have been Updated");
+
+        return "redirect:/userDetails";
+    }
 
 }
