@@ -1,5 +1,7 @@
 package com.example.BankApplication.services;
 
+import com.example.BankApplication.model.Bank_account;
+import com.example.BankApplication.model.Transactions;
 import com.example.BankApplication.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,13 +11,30 @@ import java.util.Collection;
 public class CustomerDetails implements UserDetails {
 
     private User customer;
+    private Transactions transactions;
+    private Bank_account bankAccount;
+
+
+    public CustomerDetails(Bank_account bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public CustomerDetails(Transactions transactions) {
+        this.transactions = transactions;
+    }
 
     public CustomerDetails(User customer) {
         this.customer = customer;
     }
 
+    public Bank_account getBankAccount() {
+        return bankAccount;
+    }
     public User getCustomer() {
         return customer;
+    }
+    public Transactions getTransactions(){
+        return transactions;
     }
 
     @Override
@@ -74,6 +93,8 @@ public class CustomerDetails implements UserDetails {
     public String getLastName(){
         return customer.getLastName();
     }
+    public Double getBalance(){return bankAccount.getBalance();}
+    public Double getAmount(){return transactions.getAmount();}
 
     public void setPhoneNumber(String phoneNumer){
       this.customer.setPhoneNumber(phoneNumer);

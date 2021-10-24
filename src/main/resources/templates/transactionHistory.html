@@ -46,38 +46,26 @@
 <div  class="container-fluid text-center">
     <h1 style="padding: 50px">Ceylon Bank</h1>
     <div class="card container shadow-lg" style="padding: 40px">
-        <h3 style="padding: 20px">Cash Deposit</h3>
-        <div class="row container" >
-            <div class="col-md-4">
-                <p class="containertext-center"><b>Enter the Amount</b> </p>
-            </div>
-            <div class="col-md-8">
-                <form  method="post" th:action="@{/deposit/confirm}"
-                      enctype="multipart/form-data"
-                       th:object="${transaction}"
-                        >
-                    <div class="row container">
-                        <div class="col-md-8">
-                            <div class="form-group row">
-                                    <input
-                                            type="number"
-                                            class="form-control"
-                                            id="InputFirstName"
-                                            placeholder="Enter the Amount..."
-                                            th:field="*{amount}"
-                                            required
-                                    />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                                <a th:href="@{/deposit}"> <button type="submit" class="btn btn-dark">Deposit</button></a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div th:if="${message != null}" class="alert alert-success text-center">
-            [[${message}]]
+        <h3 style="padding: 20px">Cash Deposit History</h3>
+        <div class="container" >
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="tran : ${tranHistory}">
+                    <tr>
+                        <td>[[${tran.transaction_id}]]</td>
+                        <td>[[${tran.Created_at}]]</td>
+                        <td>[[${tran.amount}]]</td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

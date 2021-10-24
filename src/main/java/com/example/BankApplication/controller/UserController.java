@@ -3,6 +3,7 @@ package com.example.BankApplication.controller;
 import com.example.BankApplication.model.Bank_account;
 import com.example.BankApplication.model.User;
 import com.example.BankApplication.repository.BankAccRepository;
+import com.example.BankApplication.repository.TransactionRepository;
 import com.example.BankApplication.repository.UserRepository;
 import com.example.BankApplication.services.CustomerDetails;
 import com.example.BankApplication.services.UserService;
@@ -11,10 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.transaction.Transactional;
@@ -26,6 +24,8 @@ public class UserController {
     private UserRepository repo;
     @Autowired
     private BankAccRepository bankAccRepository;
+    @Autowired
+    private TransactionRepository transactionRepository;
 
     @Autowired
     private UserService service;
@@ -46,7 +46,7 @@ public class UserController {
 
         Bank_account bank_account = new Bank_account();
         bank_account.setCustomer(customer);
-        bank_account.setBalance(0.0);
+        bank_account.setBalance(0.00);
 
         bankAccRepository.save(bank_account);
 
@@ -57,11 +57,12 @@ public class UserController {
     @GetMapping("/accHome")
     public String gotoHomePage(Model model, @AuthenticationPrincipal CustomerDetails customerDetails){
         User customer = customerDetails.getCustomer();
+        Bank_account bankAccount = customer.getBankAccount();
 
         List<User> listUsers =  repo.findAll();
         model.addAttribute("customer", listUsers);
-//        String balance = String.valueOf(customer.getBankAccount().getBalance());
-        String balance = "34,234";
+
+        String balance = String.valueOf(bankAccount.getBalance());
         model.addAttribute("balance", balance);
         return "accHome";
     }
@@ -87,16 +88,15 @@ public class UserController {
         return "redirect:/userDetails";
     }
 
-    @PostMapping("/userDetails/delete")
-    public String deleteUserDetails(User customer, RedirectAttributes redirectAttributes,
+    @GetMapping("/accHome/delete")
+    @Transactional
+    public String deleteUserDetails(
                            @AuthenticationPrincipal CustomerDetails loggedCustomer){
         User delCus = loggedCustomer.getCustomer();
-        delCus.setPhoneNumber(customer.getPhoneNumber());
-
+        transactionRepository.deleteAll(delCus.getBankAccount().getTransactions());
+        bankAccRepository.delete(delCus.getBankAccount());
         repo.delete(delCus);
-        redirectAttributes.addFlashAttribute("message","Your Account Details have been Deleted");
-
-        return "redirect:/userDetails";
+        return "redirect:/login";
     }
 
 }

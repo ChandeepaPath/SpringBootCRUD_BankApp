@@ -46,7 +46,7 @@ public class User {
     @CreationTimestamp
     private Date Created_at;
 
-    @OneToOne
+    @OneToOne(mappedBy = "customer")
     private Bank_account bankAccount;
 
 }

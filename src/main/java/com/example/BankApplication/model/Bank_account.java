@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,5 +30,6 @@ public class Bank_account {
     @CreationTimestamp
     private Date createdAt;
 
-
+    @OneToMany(mappedBy = "bankAccount", fetch = FetchType.EAGER)
+    private List<Transactions> transactions;
 }

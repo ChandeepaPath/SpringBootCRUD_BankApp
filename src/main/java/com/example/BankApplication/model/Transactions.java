@@ -3,6 +3,7 @@ package com.example.BankApplication.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -19,17 +20,14 @@ public class Transactions {
     private Long transaction_id;
 
     @Column(nullable = false, length = 10)
-    private Long amount;
-
-    @Column(nullable = false)
-    private Long bankAcc_id;
+    private double amount;
 
     @Column(name ="timestamp")
     @CreationTimestamp
     private Date Created_at;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "bank_accid", nullable = false)
     private Bank_account bankAccount;
 
 }

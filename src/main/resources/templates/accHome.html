@@ -35,7 +35,7 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="/accHome">Home <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="/deposit">Deposit</a>
-                    <a class="nav-item nav-link" href="#">History</a>
+                    <a class="nav-item nav-link" href="/transactionHistory">History</a>
                     <a class="nav-item nav-link" href="/userDetails">User Details</a>
                 </div>
             </div>
@@ -52,9 +52,12 @@
             <p class="text-left">Account Number : <b><span sec:authentication="principal.accNumber">Account Number</span></b></p>
 
         <div class="card container bg-light" style="padding:30px; background-color:#1565c0; ">
-            <h2><b>LKR <span th:text="${balance}">Balance</span> </b></h2>
+            <h2><b>LKR <span th:text="${balance}" >Balance</span> </b></h2>
             <h4> Balance Available</h4>
         </div>
+        </div>
+        <div style="padding: 50px">
+            <a th:href="@{/accHome/delete}" ><button class="btn btn-danger">Delete Account</button></a>
         </div>
         </div>
     </div>
